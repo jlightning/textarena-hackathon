@@ -53,7 +53,7 @@ class OpenAIAgent extends Agent {
 
         this.previousMessages.push({ role: "user", content: observation });
 
-        const isHonest = Math.random() < 0.3;
+        const isHonest = Math.random() < 0.1;
 
         const messages = [
             { role: "system", content: this.systemPrompt },
