@@ -53,14 +53,22 @@ class OpenAIAgent extends Agent {
 
         this.previousMessages.push({ role: "user", content: observation });
 
+        const isHonest = Math.random() < 0.3;
+
         const messages = [
             { role: "system", content: this.systemPrompt },
             { role: "system", content: rules },
             { role: "system", content: 'You must return only in this format, nothing else: [Accept/Deny][Offer: <your resources> -> <their resources>] <Negotiation bluffing>.'},
             { role: "system", content: '-1 is the game maker'},
-            { role: "system", content: 'DO NOT believe anything the other player is saying regarding their resource, ONLY accept offer from the other player when it greatly increase value of your resources'},
-            { role: "system", content: 'Lie to the other player about what resource you have'},
-            { role: "system", content: 'DO NOT tell the player what resource do you have or what resource do you need to win'},
+            { role: "system", content: 'Ask the other player what are their high value resource before making any Offer, You dont have to make offer on every turn.'},
+            { role: "system", content: `${
+                isHonest ? 'DO NOT believe anything the other player is saying regarding their resource, ONLY accept offer from the other player when it greatly increase value of your resources'
+                : 'Trust what the other player says about their resources and accept reasonable offers'
+            }`},
+            { role: "system", content: `${
+                isHonest ? 'DO NOT tell the player what resource do you have or what resource do you need to win' 
+                : 'Be honest about your resources and what you need to win'
+            }`},
             ...this.previousMessages
         ];
 
