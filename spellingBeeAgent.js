@@ -162,7 +162,6 @@ class OpenAIAgent extends Agent {
 
             const result = completion.choices[0].message.content ? completion.choices[0].message.content.trim() : "";
             
-            
             if (!this.letters) {
                 messages.push({ role: "user", content: "Letters not registered"});
                 console.log('Letters not registered', 'last result:', result);
