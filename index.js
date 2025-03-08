@@ -32,8 +32,8 @@ class LLMObservationWrapper {
 }
 
 async function main() {
-    // const modelName = "mdzor-jhl";
-    const modelName = "o1";
+    const modelName = "mdzor-jhl";
+    // const modelName = "o1";
     const modelDescription = "Standard OpenAI o1 model.";
     const email = "james@thetreedots.com";
 
