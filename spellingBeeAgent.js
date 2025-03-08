@@ -91,7 +91,7 @@ class OpenAIAgent extends Agent {
         const messages = [
             { role: "system", content: this.systemPrompt },
             { role: "system", content: rules },
-            { role: "system", content: 'Your MUST return only the word used for the game in this format: [<word>], DO NOT return anything else, DO NOT return empty strings.'},
+            { role: "system", content: 'Your MUST return only the valid english word used for the game in this format: [<word>], DO NOT return anything else, DO NOT return empty strings.'},
             { role: "system", content: `Used words: ${this.usedWords.join(', ')}`},
             { role: "user", content: observation }
         ];
